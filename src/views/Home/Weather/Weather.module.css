@@ -1,0 +1,56 @@
+.container {
+    box-sizing: border-box;
+
+    width: 100%;
+    height: auto;
+}
+
+.row,
+.col {
+    box-sizing: border-box;
+    display: flex;
+}
+
+.row {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.col {
+    flex-direction: column;
+    flex: 0 0 100%;
+}
+
+.dataContainer {
+    box-sizing: border-box;
+
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.degreeContainer,
+.iconContainer {
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.location {
+    cursor: pointer;
+    width: fit-content;
+}
+
+.iconContainer {
+    justify-content: center;
+    align-items: center;
+}
+
+.value {
+    font-size: 2rem;
+}

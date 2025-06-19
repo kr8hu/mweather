@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="appname">mweather</string>
+    <string name="initialize">Előkészítés</string>
+    <string name="loading">Betöltés</string>
+</resources>
