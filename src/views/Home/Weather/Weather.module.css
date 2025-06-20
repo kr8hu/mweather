@@ -32,7 +32,7 @@
     flex-wrap: wrap;
 }
 
-.degreeContainer,
+.temperatureContainer,
 .iconContainer {
     box-sizing: border-box;
 
@@ -44,6 +44,7 @@
 .location {
     cursor: pointer;
     width: fit-content;
+    font-weight: 600;
 }
 
 .iconContainer {
@@ -51,6 +52,14 @@
     align-items: center;
 }
 
-.value {
+.temperature {
+    font-size: 2rem;
+}
+
+.temperature::after {
+    content: ' °C';
+}
+
+.icon {
     font-size: 2rem;
 }

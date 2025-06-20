@@ -13,6 +13,7 @@
     "@types/react-onsenui": "^2.9.24",
     "axios": "^1.10.0",
     "onsenui": "^2.12.8",
+    "openmeteo": "^1.2.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-onsenui": "^1.13.3"

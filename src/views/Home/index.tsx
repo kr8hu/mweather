@@ -31,6 +31,7 @@ import MeteoService from '../../services/MeteoService';
 
 //Styles
 import styles from './Home.module.css';
+import ons from 'onsenui';
 
 
 /**
@@ -41,10 +42,20 @@ import styles from './Home.module.css';
  */
 function Home() {
     /**
-     * localStorage
+     * locationData
+     * 
+     * Korábban eltárolt helyadatok kiolvasása
      * 
      */
     const locationData = localStorage.getItem(`${appName}_location`);
+
+
+    /**
+     * parsedLocationData
+     * 
+     * Létező locationData esetén parseolása objektumként vagy null alapérték beállítása
+     * 
+     */
     const parsedLocationData = locationData ? JSON.parse(locationData) : null;
 
 
@@ -66,6 +77,8 @@ function Home() {
     /**
      * openLocationPromptDialog
      * 
+     * Létrehoz és megjelenít egy beviteli mezővel rendelkező dialógus ablakot
+     * 
      */
     const openLocationPromptDialog = () => {
         const dialogState: IDialogState = {
@@ -74,8 +87,8 @@ function Home() {
             closeable: false,
             text: "Add meg egy város nevét az adatok megjelenítéséhez",
             buttons: ["Mégse", "OK"],
-            onSubmit: onLocationPromptSubmit,
-            onClose: onLocationPromptClose,
+            onSubmit: handleLocationPromptSubmit,
+            onClose: handleLocationPromptClose,
         }
 
         //Dialógus megjelenítése a megadott tulajdonságokkal
@@ -86,6 +99,8 @@ function Home() {
     /**
      * openLocationSelectDialog
      * 
+     * Létrehoz és megjelenít egy lenyíló listával rendelkező dialógus ablakot
+     * 
      */
     const openLocationSelectDialog = (options: any) => {
         const dialogState: IDialogState = {
@@ -95,8 +110,8 @@ function Home() {
             text: "Válassz ki egy várost az adatok megjelenítéséhez",
             buttons: ["Mégse", "OK"],
             options,
-            onSubmit: onLocationSelectSubmit,
-            onClose: onLocationSelectClose,
+            onSubmit: handleLocationSelectSubmit,
+            onClose: handleLocationSelectClose,
         }
 
         //Dialógus megjelenítése a megadott tulajdonságokkal
@@ -105,11 +120,13 @@ function Home() {
 
 
     /**
-     * onLocationPromptSubmit
+     * handleLocationPromptSubmit
      * 
+     * Beviteli mezővel rendelkező dialógus ablak 'OK' gombra kattintásakor lefutó funkció
+     *  
      * @param data 
      */
-    const onLocationPromptSubmit = async (data: string) => {
+    const handleLocationPromptSubmit = async (data: string) => {
         //Elfoglalt/töltési állapotba rakjuk az alkalmazást
         setAppState(actionTypes.app.SET_BUSY, true);
 
@@ -119,18 +136,17 @@ function Home() {
 
             //Válasz esetén
             if (response) {
-                setAppState(actionTypes.app.SET_BUSY, false);
-
-                //Ha nincs találat
+                //Ha nincs találat a megadott város nevével
                 if (response.results.length === 0) {
                     openLocationPromptDialog();
                     return;
                 }
 
-                //Egynél több találat esetén választási lehetőségek összeállítása és dialog megjelenítés
+                //Egynél több találat esetén
                 if (response.results.length > 1) {
                     let options: IDialogOption[] = [];
 
+                    //választási lehetőségek összeállítása
                     for (const result of response.results as IMeteoLocation[]) {
                         options.push({
                             text: result.name,
@@ -138,46 +154,66 @@ function Home() {
                         });
                     }
 
+                    //dialog megjelenítés a választási lehetőségekkel
                     openLocationSelectDialog(options);
                     return;
                 }
 
                 //Egyetlen találat esetén
                 const stringifiedResult = JSON.stringify(response.results[0]);
-                onLocationSelectSubmit(stringifiedResult);
+
+                handleLocationSelectSubmit(stringifiedResult);
+                setAppState(actionTypes.app.SET_BUSY, false);
             }
         } catch (error: any) {
+            const toastMessage = "A megadott helységnévvel nem sikerült betölteni az időjárási adatokat.";
+            const toastOptions = {
+                timeout: 4000,
+                force: true
+            };
+
             setAppState(actionTypes.app.SET_BUSY, false);
+            ons.notification.toast(toastMessage, toastOptions);
             throw new Error(error);
         }
     }
 
 
     /**
-     * onLocationPromptClose
+     * handleLocationPromptClose
+     * 
+     * Beviteli mezővel rendelkező dialógus ablak bezárásakor lefutó funkció
      * 
      */
-    const onLocationPromptClose = () => {
-        console.log("onLocationPromptClose");
+    const handleLocationPromptClose = () => {
+        console.log("handleLocationPromptClose");
+        setAppState(actionTypes.app.SET_BUSY, false);
     }
 
 
     /**
-     * onLocationSelectSubmit
+     * handleLocationSelectSubmit
+     * 
+     * Legördülő listából való kiválasztás után lefutó funkció
      * 
      */
-    const onLocationSelectSubmit = (value: any) => {
-        const locationData = JSON.parse(value);
+    const handleLocationSelectSubmit = async (value: any) => {
+        const locationData: IMeteoLocation = JSON.parse(value);
+
         setLocation(locationData);
+        setAppState(actionTypes.app.SET_BUSY, false);
     }
 
 
     /**
-     * onLocationSelectClose
+     * handleLocationSelectClose
+     * 
+     * Legördülő listával rendelkező dialógus ablak bezárásakor lefutó funkció
      * 
      */
-    const onLocationSelectClose = () => {
-        console.log("onLocationSelectClose");
+    const handleLocationSelectClose = () => {
+        console.log("handleLocationSelectClose");
+        setAppState(actionTypes.app.SET_BUSY, false);
     }
 
 
@@ -191,6 +227,7 @@ function Home() {
             return;
         }
 
+        //Böngészőben tároljuk
         localStorage.setItem(`${appName}_location`, JSON.stringify(location));
     }, [location]);
 
@@ -202,7 +239,7 @@ function Home() {
                     <div className={styles.col}>
                         <Weather
                             location={location}
-                            onChangeLocation={openLocationPromptDialog} />
+                            onClickLocation={openLocationPromptDialog} />
                     </div>
                     <div className={styles.col}>
 

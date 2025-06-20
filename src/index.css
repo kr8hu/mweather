@@ -9,20 +9,16 @@
   font-style: normal;
 }
 
-@font-face {
-  font-family: "Rubik Puddles";
-  src: url('assets/fonts/Rubik_Puddles/RubikPuddles-Regular.ttf');
-  font-style: normal;
-}
-
 
 /*
  root
 */
 :root {
-  --background-color-start-default:  rgb(113, 175, 226);
+  --background-color-start-default: rgb(113, 175, 226);
   --background-color-end-default: rgb(154, 206, 248);
 
-  --background-color-start-rainy:  rgb(87, 104, 118);
+  --background-color-start-rainy: rgb(87, 104, 118);
   --background-color-end-rainy: rgb(107, 112, 114);
+
+  --background-color-layer: rgba(255, 255, 255, 0.5);
 }
