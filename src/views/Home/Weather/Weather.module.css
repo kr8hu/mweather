@@ -63,3 +63,9 @@
 .icon {
     font-size: 2rem;
 }
+
+@media screen and (max-width: 640px) {
+    .iconContainer {
+        align-items: flex-end;
+    }
+}

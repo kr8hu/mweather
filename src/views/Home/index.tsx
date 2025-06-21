@@ -24,7 +24,7 @@ import {
     actionTypes,
     dialogTypes
 } from '../../shared/const';
-import { getWeatherID } from '../../shared/utils';
+import { getWeatherType } from '../../shared/utils';
 
 //Interfaces
 import IDialogState from '../../interfaces/DialogState';
@@ -232,8 +232,8 @@ function Home() {
      * @param data 
      */
     const changeWeatherID = (data: IMeteoForecast) => {
-        const weatherID = getWeatherID(data.current.weather_code);
-        setWeatherID(weatherID);
+        const weatherType = getWeatherType(data.current.weather_code);
+        setWeatherID(weatherType.id);
     }
 
 
@@ -276,9 +276,9 @@ function Home() {
                     </div>
                 </div>
 
-                <br />
-
-                <Text node="author" />
+                <Text
+                    className={styles.author}
+                    node="author" />
             </div>
         </Page>
     )

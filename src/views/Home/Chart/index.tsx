@@ -1,3 +1,9 @@
+//React
+import {
+  useEffect,
+  useState
+} from 'react';
+
 //Chart.js
 import {
   Chart as ChartJS,
@@ -9,11 +15,11 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-
-import { Line } from 'react-chartjs-2';
+import * as ReactChart from 'react-chartjs-2';
 
 //Styles
 import styles from './Chart.module.css';
+import Text from '../../../components/Text';
 
 
 /**
@@ -36,8 +42,8 @@ ChartJS.register(
  * 
 */
 interface Props {
-    values: any;
-    labels?: string[]
+  values: any;
+  labels?: string[]
 }
 
 
@@ -48,12 +54,78 @@ interface Props {
  * 
  * @return
  */
-function Chart({ values }: Props) {
-    return (
-        <div className={styles.container}>
+function Chart({ labels, values }: Props) {
+  /**
+   * initialData
+   * 
+   */
+  const initialData = {
+    labels: labels || [],
+    datasets: []
+  };
 
-        </div>
+
+  /**
+   * options
+   * 
+   */
+  const options = {
+    responsive: true
+  }
+
+
+  /**
+   * States
+   * 
+   */
+  const [data, setData] = useState<any>(initialData);
+
+
+  /**
+   * Effects
+   * 
+   */
+  useEffect(() => {
+    if (!values) return;
+
+    setData((prev: any) => ({
+      ...prev,
+      labels,
+      datasets: [
+        {
+          label: 'Napi maximum hőmérséklet',
+          data: values,
+          borderColor: 'rgb(255, 255, 255)',
+          backgroundColor: 'rgba(255, 255, 255, 0.5)',
+        }
+      ]
+    }))
+  }, [values, labels]);
+
+
+  /**
+   * renderChart
+   * 
+   * @returns 
+   */
+  const renderChart = () => {
+    if (!values) {
+      return <Text node="chart_load_failed" />
+    }
+
+    return (
+      <ReactChart.Line
+        data={data}
+        options={options} />
     )
+  }
+  
+
+  return (
+    <div className={styles.container}>
+      {renderChart()}
+    </div>
+  )
 }
 
 export default Chart;

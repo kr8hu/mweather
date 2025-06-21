@@ -9,7 +9,7 @@
     padding: 0 4rem;
 
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
 
     --bg-color: var(--background-color-default);
     background-color: var(--bg-color);
@@ -64,7 +64,7 @@
 .layer {
     box-sizing: border-box;
 
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
 
@@ -86,8 +86,7 @@
 
 .row {
     width: 100%;
-    height: 80%;
-
+    height: 100%;
     flex-direction: row;
 }
 
@@ -105,4 +104,24 @@
 
 .forecastTitle {
     font-weight: bold;
+}
+
+@media screen and (max-width: 640px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .row {
+        flex-wrap: wrap;
+        gap: 2rem;
+    }
+
+    .col:nth-child(1),
+    .col:nth-child(2) {
+        flex: 0 0 100%;
+    }
+
+    .author {
+        margin: 0 auto;
+    }
 }

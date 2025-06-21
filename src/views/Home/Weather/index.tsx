@@ -1,7 +1,7 @@
 //React
-import { 
-    useEffect, 
-    useState 
+import {
+    useEffect,
+    useState
 } from 'react';
 
 //Onsen UI
@@ -17,7 +17,7 @@ import { IMeteoForecast } from '../../../interfaces/MeteoForecast';
 //Shared
 import {
     getWeatherIcon,
-    getWeatherName
+    getWeatherType
 } from '../../../shared/utils';
 
 //Services
@@ -75,10 +75,17 @@ function Weather({ location, onLoaded, onClickLocation }: Props) {
 
 
     /**
+     * formattedLocationName
+     * 
+     */
+    const formattedLocationName = `${location?.name}, ${location?.country}, ${location?.country_code}`;
+
+
+    /**
      * currentWeatherName
      * 
      */
-    const currentWeatherName = getWeatherName(data?.current.weather_code);
+    const currentWeatherType = getWeatherType(data?.current.weather_code);
 
 
     /**
@@ -140,7 +147,7 @@ function Weather({ location, onLoaded, onClickLocation }: Props) {
                     <Text
                         className={styles.location}
                         onClick={onClickLocation}>
-                        {location?.name || locationPlaceholder}
+                        {formattedLocationName || locationPlaceholder}
                     </Text>
                 </div>
                 <div className={styles.col}>
@@ -161,7 +168,7 @@ function Weather({ location, onLoaded, onClickLocation }: Props) {
                 </div>
                 <div className={styles.col}>
                     <Text>
-                        {currentWeatherName}
+                        {currentWeatherType.name}
                     </Text>
                 </div>
             </div>

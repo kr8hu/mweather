@@ -5,87 +5,44 @@ import {
 
 
 /**
- * getWeatherID
+ * getWeatherType
  * 
- * Visszatér az időjárási állapot azonosítójával a megadott kód alapján
- * 
- * @param weatherCode 
- * @returns 
- */
-export function getWeatherID(weatherCode: number | undefined) {
-    switch (weatherCode) {
-        case 0: return weatherTypes.CLEAR.id;
-        case 1: return weatherTypes.OVERCAST.id;
-        case 2: return weatherTypes.OVERCAST.id;
-        case 3: return weatherTypes.OVERCAST.id;
-        case 45: return weatherTypes.FOG.id;
-        case 48: return weatherTypes.FOG.id;
-        case 51: return weatherTypes.DRIZZLE.id;
-        case 53: return weatherTypes.DRIZZLE.id;
-        case 55: return weatherTypes.DRIZZLE.id;
-        case 56: return weatherTypes.FREEZING.id;
-        case 57: return weatherTypes.FREEZING.id;
-        case 61: return weatherTypes.RAIN.id;
-        case 63: return weatherTypes.RAIN.id;
-        case 65: return weatherTypes.RAIN.id;
-        case 66: return weatherTypes.FREEZING.id;
-        case 67: return weatherTypes.FREEZING.id;
-        case 71: return weatherTypes.SNOW.id;
-        case 73: return weatherTypes.SNOW.id;
-        case 75: return weatherTypes.SNOW.id;
-        case 77: return weatherTypes.SNOWGRAIN.id;
-        case 80: return weatherTypes.SHOWERS.id;
-        case 81: return weatherTypes.SHOWERS.id;
-        case 82: return weatherTypes.SHOWERS.id;
-        case 85: return weatherTypes.SNOWERS.id;
-        case 86: return weatherTypes.SNOWERS.id;
-        case 95: return weatherTypes.STORM.id;
-        case 96: return weatherTypes.STORM.id;
-        case 99: return weatherTypes.STORM.id;
-        default: return weatherTypes.DEFAULT.id;
-    }
-}
-
-
-/**
- * getWeatherName
- * 
- * Visszatér az időjárási állapot nevével a megadott kód alapján
+ * Visszatér az időjárási állapot tulajdonságaival a megadott kód alapján
  * 
  * @param weatherCode 
  * @returns 
  */
-export function getWeatherName(weatherCode: number | undefined) {
+export function getWeatherType(weatherCode: number | undefined) {
     switch (weatherCode) {
-        case 0: return weatherTypes.CLEAR.name;
-        case 1: return weatherTypes.OVERCAST.name;
-        case 2: return weatherTypes.OVERCAST.name;
-        case 3: return weatherTypes.OVERCAST.name;
-        case 45: return weatherTypes.FOG.name;
-        case 48: return weatherTypes.FOG.name;
-        case 51: return weatherTypes.DRIZZLE.name;
-        case 53: return weatherTypes.DRIZZLE.name;
-        case 55: return weatherTypes.DRIZZLE.name;
-        case 56: return weatherTypes.FREEZING.name;
-        case 57: return weatherTypes.FREEZING.name;
-        case 61: return weatherTypes.RAIN.name;
-        case 63: return weatherTypes.RAIN.name;
-        case 65: return weatherTypes.RAIN.name;
-        case 66: return weatherTypes.FREEZING.name;
-        case 67: return weatherTypes.FREEZING.name;
-        case 71: return weatherTypes.SNOW.name;
-        case 73: return weatherTypes.SNOW.name;
-        case 75: return weatherTypes.SNOW.name;
-        case 77: return weatherTypes.SNOWGRAIN.name;
-        case 80: return weatherTypes.SHOWERS.name;
-        case 81: return weatherTypes.SHOWERS.name;
-        case 82: return weatherTypes.SHOWERS.name;
-        case 85: return weatherTypes.SNOWERS.name;
-        case 86: return weatherTypes.SNOWERS.name;
-        case 95: return weatherTypes.STORM.name;
-        case 96: return weatherTypes.STORM.name;
-        case 99: return weatherTypes.STORM.name;
-        default: return weatherTypes.DEFAULT.name;
+        case 0: return weatherTypes.CLEAR;
+        case 1: return weatherTypes.OVERCAST;
+        case 2: return weatherTypes.OVERCAST;
+        case 3: return weatherTypes.OVERCAST;
+        case 45: return weatherTypes.FOG;
+        case 48: return weatherTypes.FOG;
+        case 51: return weatherTypes.DRIZZLE;
+        case 53: return weatherTypes.DRIZZLE;
+        case 55: return weatherTypes.DRIZZLE;
+        case 56: return weatherTypes.FREEZING;
+        case 57: return weatherTypes.FREEZING;
+        case 61: return weatherTypes.RAIN;
+        case 63: return weatherTypes.RAIN;
+        case 65: return weatherTypes.RAIN;
+        case 66: return weatherTypes.FREEZING;
+        case 67: return weatherTypes.FREEZING;
+        case 71: return weatherTypes.SNOW;
+        case 73: return weatherTypes.SNOW;
+        case 75: return weatherTypes.SNOW;
+        case 77: return weatherTypes.SNOWGRAIN;
+        case 80: return weatherTypes.SHOWERS;
+        case 81: return weatherTypes.SHOWERS;
+        case 82: return weatherTypes.SHOWERS;
+        case 85: return weatherTypes.SNOWERS;
+        case 86: return weatherTypes.SNOWERS;
+        case 95: return weatherTypes.STORM;
+        case 96: return weatherTypes.STORM;
+        case 99: return weatherTypes.STORM;
+        default: return weatherTypes.DEFAULT;
     }
 }
 

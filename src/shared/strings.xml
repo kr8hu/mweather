@@ -5,4 +5,5 @@
     <string name="initialize">Előkészítés</string>
     <string name="loading">Betöltés</string>
     <string name="forecast_title">7 napos előrejelzés</string>
+    <string name="chart_load_failed">Nem sikerült betölteni a diagramot.</string>
 </resources>

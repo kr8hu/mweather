@@ -13,7 +13,6 @@ import styles from './ForecastDay.module.css';
  * 
  */
 interface Props {
-    key: any;
     date: string;
     minTemp: number;
     maxTemp: number;
@@ -29,7 +28,6 @@ interface Props {
  * @return
  */
 function ForecastDay({
-    key,
     date,
     minTemp,
     maxTemp,
@@ -78,7 +76,7 @@ function ForecastDay({
 
 
     return (
-        <div key={key} className={styles.container}>
+        <div className={styles.container}>
             <div className={styles.row}>
                 <div className={styles.col}>
                     <Text className={styles.dayName}>

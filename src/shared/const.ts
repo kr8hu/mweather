@@ -111,7 +111,7 @@ export const weatherTypes = {
         name: "Zápor",
         icon: "wi-showers"
     },
-    SNOWERS: {//tudom, nagyon rossz szójáték.. xD
+    SNOWERS: {//tudom, nagyon rossz szójáték.. :D
         id: 9,
         name: "Hózápor",
         icon: "wi-snow"

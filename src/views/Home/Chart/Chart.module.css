@@ -1,0 +1,16 @@
+.container {
+    box-sizing: border-box;
+    width: 50%;
+    height: auto;
+
+    border: 1px solid white;
+    border-radius: 20px;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+@media screen and (max-width: 640px) {
+    .container {
+       width: 100%;
+    }
+}

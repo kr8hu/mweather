@@ -21,6 +21,7 @@ import MeteoService from '../../../services/MeteoService';
 
 //Styles
 import styles from './Forecast.module.css';
+import { getDayName } from '../../../shared/utils';
 
 
 /**
@@ -113,9 +114,10 @@ function Forecast({ location }: Props) {
                     {renderForecast()}
                 </div>
                 <div className={styles.col}>
-                    <Chart
+                    {location && <Chart
+                        labels={data?.daily.time.map((t: string) => getDayName(new Date(t)))}
                         values={data?.daily.temperature_2m_max}
-                    />
+                    />}
                 </div>
             </div>
         </div>
