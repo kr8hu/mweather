@@ -48,20 +48,20 @@ A következő képernyőképek bemutatják az alkalmazás működését:
 ![Főképernyő](etc/screencaptures/screencapture1.png)
 *Főoldal megjelenése*
 
-![Prompt](etc/screencaptures/screenshot2.png)
+![Prompt](etc/screencaptures/screencapture2.png)
 *Helyszín megadása beviteli mezővel*
 
-![Select](etc/screencaptures/screenshot3.png)
+![Select](etc/screencaptures/screencapture3.png)
 *Helyszín kiválasztása több találat esetén*
 
-![Téma](etc/screencaptures/screenshot4.png)
+![Téma](etc/screencaptures/screencapture4.png)
 *Dinamikusan változó téma az időjárási adatok szerint*
 
-![Reszponzív-1](etc/screencaptures/screenshot5.png)
+![Reszponzív-1](etc/screencaptures/screencapture5.png)
 *Mobilos nézet*
 
-![Reszponzív-2](etc/screencaptures/screenshot6.png)
+![Reszponzív-2](etc/screencaptures/screencapture6.png)
 *Mobilos nézet*
 
-![Reszponzív-3](etc/screencaptures/screenshot7.png)
+![Reszponzív-3](etc/screencaptures/screencapture7.png)
 *Mobilos nézet*
