@@ -1,5 +1,8 @@
 //React
-import { useEffect, useState } from 'react';
+import { 
+    useEffect, 
+    useState 
+} from 'react';
 
 //Onsen UI
 import ons from 'onsenui';
@@ -13,8 +16,8 @@ import { IMeteoForecast } from '../../../interfaces/MeteoForecast';
 
 //Shared
 import {
-    getWeatherIconByCode,
-    getWeatherNameByCode
+    getWeatherIcon,
+    getWeatherName
 } from '../../../shared/utils';
 
 //Services
@@ -75,14 +78,14 @@ function Weather({ location, onLoaded, onClickLocation }: Props) {
      * currentWeatherName
      * 
      */
-    const currentWeatherName = getWeatherNameByCode(data?.current.weather_code);
+    const currentWeatherName = getWeatherName(data?.current.weather_code);
 
 
     /**
      * currentWeatherIcon
      * 
      */
-    const currentWeatherIcon = getWeatherIconByCode(data?.current.weather_code)
+    const currentWeatherIcon = getWeatherIcon(data?.current.weather_code)
 
 
     /**
@@ -90,6 +93,7 @@ function Weather({ location, onLoaded, onClickLocation }: Props) {
      * 
      * Időjárási adatok lekérése helyadatok alapján
      * 
+     * @param location 
      */
     const getWeatherByLocation = async (location: IMeteoLocation) => {
         try {

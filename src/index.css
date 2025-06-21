@@ -14,11 +14,17 @@
  root
 */
 :root {
-  --background-color-start-default: rgb(113, 175, 226);
-  --background-color-end-default: rgb(154, 206, 248);
-
-  --background-color-start-rainy: rgb(87, 104, 118);
-  --background-color-end-rainy: rgb(107, 112, 114);
+  --background-color-default: rgb(113, 175, 226);
+  --background-color-overcast: rgb(146, 166, 182);
+  --background-color-fog: rgb(171, 179, 185);
+  --background-color-drizzle: rgb(87, 104, 118);
+  --background-color-freezing: rgb(171, 179, 185);
+  --background-color-rain: rgb(87, 104, 118);
+  --background-color-snow: rgb(203, 210, 216);
+  --background-color-snowgrain: rgb(203, 210, 216);
+  --background-color-showers: rgb(87, 104, 118);
+  --background-color-snowers: rgb(203, 210, 216);
+  --background-color-storm: rgb(61, 73, 84);
 
   --background-color-layer: rgba(255, 255, 255, 0.5);
 }

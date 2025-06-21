@@ -9,10 +9,14 @@ import useApp from '../../hooks/useApp';
 import useDialog from '../../hooks/useDialog';
 
 //Onsen UI
+import ons from 'onsenui';
 import { Page } from 'react-onsenui';
 
 //Copmonents
 import Weather from './Weather';
+import Forecast from './Forecast';
+
+import Text from '../../components/Text';
 
 //Shared
 import {
@@ -20,18 +24,19 @@ import {
     actionTypes,
     dialogTypes
 } from '../../shared/const';
+import { getWeatherID } from '../../shared/utils';
 
 //Interfaces
 import IDialogState from '../../interfaces/DialogState';
 import IDialogOption from '../../interfaces/DialogOption';
 import IMeteoLocation from '../../interfaces/MeteoLocation';
+import { IMeteoForecast } from '../../interfaces/MeteoForecast';
 
 //Services
 import MeteoService from '../../services/MeteoService';
 
 //Styles
 import styles from './Home.module.css';
-import ons from 'onsenui';
 
 
 /**
@@ -41,6 +46,14 @@ import ons from 'onsenui';
  * @returns 
  */
 function Home() {
+    /**
+     * Hooks
+     * 
+     */
+    const { setAppState } = useApp();
+    const { setDialogState } = useDialog();
+
+
     /**
      * locationData
      * 
@@ -60,18 +73,11 @@ function Home() {
 
 
     /**
-     * Hooks
-     * 
-     */
-    const { setAppState } = useApp();
-    const { setDialogState } = useDialog();
-
-
-    /**
      * States
      * 
      */
     const [location, setLocation] = useState<IMeteoLocation | null>(parsedLocationData);
+    const [weatherID, setWeatherID] = useState<number>(-1);
 
 
     /**
@@ -218,6 +224,20 @@ function Home() {
 
 
     /**
+     * changeWeatherID
+     * 
+     * A Weather komponensből érkező weather_code értéke alapján az időjárás azonosítóját tároljuk a stateben különböző funckiók ellátáshoz
+     * jelen esetben az app témájának megváltoztatásához.
+     * 
+     * @param data 
+     */
+    const changeWeatherID = (data: IMeteoForecast) => {
+        const weatherID = getWeatherID(data.current.weather_code);
+        setWeatherID(weatherID);
+    }
+
+
+    /**
      * Effects
      * 
      */
@@ -234,17 +254,31 @@ function Home() {
 
     return (
         <Page>
-            <div className={styles.container} data-theme="default">
+            <div className={styles.container} data-weatherid={weatherID}>
+                {/* Háttér réteg */}
+                <div className={styles.layer} />
+
+                {/* Tartalom */}
                 <div className={styles.row}>
                     <div className={styles.col}>
                         <Weather
                             location={location}
-                            onClickLocation={openLocationPromptDialog} />
+                            onClickLocation={openLocationPromptDialog}
+                            onLoaded={changeWeatherID} />
                     </div>
                     <div className={styles.col}>
-
+                        <Text
+                            className={styles.forecastTitle}
+                            node="forecast_title" />
+                        <br />
+                        <Forecast
+                            location={location} />
                     </div>
                 </div>
+
+                <br />
+
+                <Text node="author" />
             </div>
         </Page>
     )

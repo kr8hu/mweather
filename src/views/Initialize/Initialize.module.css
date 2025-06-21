@@ -9,9 +9,7 @@
     width: 100vw;
     height: 100vh;
 
-    background: linear-gradient(to bottom,
-            var(--background-color-start-default),
-            var(--background-color-end-default));
+    background-color: var(--background-color-default);
 }
 
 .container * {

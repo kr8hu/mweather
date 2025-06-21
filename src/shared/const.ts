@@ -60,42 +60,70 @@ export const loadingStates = {
  * 
  */
 export const weatherTypes = {
-    CLEAR: "Derült égbolt",
-    OVERCAST: "Részben felhős, borult",
-    FOG: "Köd",
-    DRIZZLE: "Szitálás",
-    FREEZING: "Ónos szitálás",
-    RAIN: "Eső",
-    SNOW: "Hóesés",
-    SNOWGRAIN: "Hódara",
-    SHOWERS: "Zápor",
-    SNOWERS: "Hózápor", //tudom, nagyon rossz szójáték.. xD
-    STORM: "Zivatar"
-}
-
-
-/**
- * weatherIcons
- * 
- * @see https://erikflowers.github.io/weather-icons/
- */
-export const weatherIcons = {
     CLEAR: {
-        day: "wi-day-sunny",
-        night: "wi-night-clear"
+        id: 0,
+        name: "Derült égbolt",
+        icon: {
+            day: "wi-day-sunny",
+            night: "wi-night-clear"
+        },
     },
     OVERCAST: {
-        day: "wi-day-cloudy",
-        night: "wi-night-alt-cloudy"
+        id: 1,
+        name: "Részben felhős, borult",
+        icon: {
+            day: "wi-day-cloudy",
+            night: "wi-night-alt-cloudy"
+        },
     },
-    FOG: "wi-fog",
-    DRIZZLE: "wi-raindrops",
-    FREEZING: "wi-sleet",
-    RAIN: "wi-rain",
-    SNOW: "wi-snow",
-    SNOWGRAIN: "wi-rain-mix",
-    SHOWERS: "wi-showers",
-    SNOWERS: "wi-snow",
-    STORM: "wi-thunderstorm",
-    DEFAULT: "wi-na"
+    FOG: {
+        id: 2,
+        name: "Köd",
+        icon: "wi-fog"
+    },
+    DRIZZLE: {
+        id: 3,
+        name: "Szitálás",
+        icon: "wi-raindrops"
+    },
+    FREEZING: {
+        id: 4,
+        name: "Ónos szitálás",
+        icon: "wi-sleet"
+    },
+    RAIN: {
+        id: 5,
+        name: "Eső",
+        icon: "wi-rain"
+    },
+    SNOW: {
+        id: 6,
+        name: "Hóesés",
+        icon: "wi-snow"
+    },
+    SNOWGRAIN: {
+        id: 7,
+        name: "Hódara",
+        icon: "wi-rain-mix"
+    },
+    SHOWERS: {
+        id: 8,
+        name: "Zápor",
+        icon: "wi-showers"
+    },
+    SNOWERS: {//tudom, nagyon rossz szójáték.. xD
+        id: 9,
+        name: "Hózápor",
+        icon: "wi-snow"
+    },
+    STORM: {
+        id: 10,
+        name: "Zivatar",
+        icon: "wi-thunderstorm"
+    },
+    DEFAULT: {
+        id: -1,
+        name: "N/A",
+        icon: "wi-na"
+    }
 }

@@ -64,6 +64,18 @@ class MeteoService {
 
         return response.data;
     }
+
+
+    /**
+     * getForecastByQuery
+     * 
+     */
+    async getForecastByQuery(queryString: string): Promise<any> {
+        const url = `${this.forecastApi}forecast?${queryString}`;
+        const response: AxiosResponse<any, any> = await http.get(url);
+
+        return response.data;
+    }
 }
 
 //eslint-disable-next-line
