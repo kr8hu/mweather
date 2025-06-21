@@ -12,7 +12,7 @@ npm install
 
 ## Használati útmutató
 
-**Teszteléshez**:
+**Teszteléshez, fejlesztéshez**:
 
 ```
 npm run dev
