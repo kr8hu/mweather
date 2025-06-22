@@ -26,6 +26,8 @@ npm install
 npm run dev
 ```
 
+A futtatás után a localhost:3001 címen érhető el a böngészőből az alkalmazás.
+
 **Build**:
 
 ```
